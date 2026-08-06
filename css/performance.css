@@ -1,0 +1,2 @@
+/* Keep cinematic motion on the compositor so the UI remains responsive. */
+.aurora,.grain,.orb,.birthday-glow,.cuteness-orbit,.meter-face,.sky,.laughing-sky{transform:translateZ(0);will-change:transform,opacity}.edit-status,.primary-btn,.text-btn,.final-lock,.skip-btn{touch-action:manipulation}.modal-film video,.full-video{backface-visibility:hidden}@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}

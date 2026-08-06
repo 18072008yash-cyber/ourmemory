@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/cuteness.css" />
+    <link rel="stylesheet" href="css/cuteness-extra.css" />
+    <link rel="stylesheet" href="css/performance.css" />
     <style>
       .memory-card.watched{border-color:#f2c4ff;box-shadow:0 0 0 1px rgba(255,189,225,.22),0 16px 32px rgba(143,77,212,.16)}
       #card-grid .memory-card::after{content:none!important;display:none!important}#card-grid .memory-card{cursor:default}.edit-checklist{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:16px auto 0;max-width:350px}.edit-status{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.14);border-radius:99px;padding:7px 11px;color:#a89cac;background:rgba(255,255,255,.035);font:700 .58rem 'DM Sans',sans-serif;letter-spacing:.08em;transition:.35s;cursor:pointer;position:relative}.edit-status:hover{transform:translateY(-2px);border-color:rgba(255,205,234,.65);color:#f9e3ee}.edit-status:hover::after{content:'♥ ✦';position:absolute;left:50%;top:-18px;translate:-50% 0;color:#ffc0dc;white-space:nowrap;font-size:.75rem;pointer-events:none;animation:heart-sparkle .8s ease-out both}.edit-status b{display:none}.edit-status.checked{color:#f5d5e5;border-color:rgba(255,177,218,.48);background:linear-gradient(120deg,rgba(222,181,255,.16),rgba(255,142,189,.14))}.edit-status.checked b{display:grid;place-items:center;width:17px;height:17px;border-radius:50%;font-size:.68rem;font-weight:800;color:#2a1432;background:linear-gradient(135deg,#edc7ff,#ffb4d0);box-shadow:0 3px 12px rgba(255,148,202,.28)}@keyframes heart-sparkle{from{opacity:0;transform:translateY(8px) scale(.7)}to{opacity:1;transform:translateY(-5px) scale(1)}}.ending-signature{font:italic 1.05rem/1.3 'Playfair Display',serif!important;color:#efc9e2!important;margin:7px auto 28px!important}
@@ -55,10 +58,37 @@
       </section>
 
       <section class="screen" id="opener" data-screen="opener">
-        <video class="full-video" id="opener-video" autoplay controls playsinline preload="auto" poster="images/opener-poster.jpg"><source src="videos/01-opener.mp4" type="video/mp4"></video>
+        <video class="full-video" id="opener-video" autoplay controls playsinline preload="metadata" poster="images/opener-poster.jpg"><source src="videos/01-opener.mp4" type="video/mp4"></video>
         <div class="video-fallback">Add <code>videos/01-opener.mp4</code> to reveal your opening film.</div>
         <button id="opener-start" style="position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:13px 18px;background:rgba(19,8,28,.74);backdrop-filter:blur(14px);color:white;font:600 .84rem 'DM Sans',sans-serif;cursor:pointer">Tap to play the intro &nbsp; ▶</button>
-        <button class="skip-btn" data-go="birthday">Skip intro</button>
+        <button class="skip-btn" data-go="cuteness-intro">Skip intro</button>
+      </section>
+
+      <section class="screen" id="cuteness-intro" data-screen="cuteness-intro">
+        <div class="cuteness-orbit orbit-a" aria-hidden="true"></div><div class="cuteness-orbit orbit-b" aria-hidden="true"></div>
+        <div class="cuteness-start-card glass">
+          <div class="start-face" aria-hidden="true">🥹</div>
+          <p class="eyebrow">One important thing first</p>
+          <h2>Let’s measure<br>how <em>cutee</em> you are.</h2>
+          <p>I have a feeling this meter may not survive...</p>
+          <button class="primary-btn" data-go="cuteness"><span>Let’s measure</span><i>→</i></button>
+        </div>
+      </section>
+
+      <section class="screen" id="cuteness" data-screen="cuteness">
+        <div class="cuteness-orbit orbit-a" aria-hidden="true"></div><div class="cuteness-orbit orbit-b" aria-hidden="true"></div>
+        <div class="cuteness-content">
+          <h2>Measuring your<br><em>cuteness...</em></h2>
+          <div class="meter-scene" id="meter-scene">
+            <div class="meter-track"><div class="meter-fill" id="meter-fill"><span></span></div><div class="meter-glow"></div></div>
+            <div class="meter-reading"><strong id="meter-number">0</strong><small>%</small></div>
+            <div class="meter-scale"><span>0</span><span>50</span><span>100</span><span>∞</span></div>
+          </div>
+          <div class="meter-face" id="meter-face" aria-live="polite">🙂</div>
+          <p class="meter-status" id="meter-status">Starting the cuteness scan...</p>
+          <div class="meter-result" id="meter-result"><p>You broke the <em>cuteness meter!</em></p><h3>How are you sooo cutee? 🥹💖</h3><small>I lovee youu my cutieee ❤️😊</small></div>
+          <button class="primary-btn hidden" id="cuteness-next" data-go="birthday"><span>Continue</span><i>→</i></button>
+        </div>
       </section>
 
       <section class="screen" id="birthday" data-screen="birthday">
@@ -74,23 +104,23 @@
         <div class="letter-shell">
           <p class="eyebrow">A note from my heart</p>
           <article class="letter glass"><div class="wax">♥</div><p id="letter-text"></p></article>
-          <button class="primary-btn hidden" id="letter-next" data-go="gallery"><span>See our little moments</span><i>→</i></button>
+          <button class="primary-btn hidden" id="letter-next" data-go="gallery"><span>See your next surprise</span><i>→</i></button>
         </div>
       </section>
 
       <section class="screen scroll-screen" id="gallery" data-screen="gallery">
-        <header class="gallery-head"><h2>There are some <em>beautiful edits</em> for you, my <em>beautiful princess.</em></h2><p>I hope you enjoy.</p><div class="watch-progress"><span id="watched-count">0</span> / 8 edits watched <div><i id="progress-fill"></i></div></div><div class="edit-checklist" id="edit-checklist" aria-label="Edit completion status"></div></header>
+        <header class="gallery-head"><h2>There are some <em>beautiful edits</em> for you, my <em>beautiful princess.</em></h2><p>I hope you enjoy.</p><div class="watch-progress"><span id="watched-count">0</span> / 16 edits watched <div><i id="progress-fill"></i></div></div><div class="edit-checklist" id="edit-checklist" aria-label="Edit completion status"></div></header>
         <button class="final-lock" id="final-lock" disabled><span>🔒</span> Watch every edit to unlock</button>
       </section>
 
       <section class="screen" id="transition" data-screen="transition"><div class="typewriter-wrap"><p class="eyebrow">One more thing</p><h2 id="transition-text"></h2><button class="text-btn hidden" id="reveal-final" data-go="final-video">Reveal it <i>→</i></button></div></section>
-      <section class="screen" id="final-video" data-screen="final-video"><video class="full-video" id="last-video" autoplay controls playsinline preload="auto" poster="images/final-poster.jpg"><source src="videos/17-final-surprise.mp4" type="video/mp4"></video><div class="video-fallback">Add <code>videos/17-final-surprise.mp4</code> for the final film.</div><button class="skip-btn" data-go="laughing">Continue</button></section>
+      <section class="screen" id="final-video" data-screen="final-video"><video class="full-video" id="last-video" autoplay controls playsinline preload="metadata" poster="images/final-poster.jpg"><source src="videos/17-final-surprise.mp4" type="video/mp4"></video><div class="video-fallback">Add <code>videos/17-final-surprise.mp4</code> for the final film.</div><button class="skip-btn" data-go="laughing">Continue</button></section>
       <section class="screen" id="laughing" data-screen="laughing"><div class="laughing-sky" id="laughing-sky" aria-hidden="true"></div><div class="laughing-content"><p class="eyebrow">One last silly moment</p><h2>hehehehehe<br><em>sorryyyy</em> 😂</h2><button class="primary-btn" data-go="ending"><span>Continue</span><i>→</i></button></div></section>
       <section class="screen" id="ending" data-screen="ending"><div class="sky" id="sky" aria-hidden="true"></div><div class="ending-content"><p class="eyebrow">And that’s only the beginning</p><h1>To more laughter.<br>More <em>us.</em></h1><p>I hope every birthday finds you more loved than the last.</p><p class="ending-signature">Always yours,<br><em>Yash ♥</em></p><button class="primary-btn" id="replay"><span>Replay our story</span><i>↻</i></button><p class="replay-note">Made only for you, by <em>Yash</em> ♥<br>I lovee youu ❤️❤️</p><button class="secret-heart" id="secret-heart" aria-label="A little secret">♥</button><p class="secret-message" id="secret-message">No matter what, I’m always with you.</p></div></section>
     </main>
     <div class="modal" id="video-modal" aria-hidden="true"><button class="modal-close" aria-label="Close video">×</button><div class="modal-film"><p class="film-label" id="film-label"></p><video id="memory-video" controls playsinline><source id="memory-source" src="" type="video/mp4"></video><div class="video-fallback">Add this video to the <code>videos</code> folder to play it.</div></div></div>
     <div class="completion-toast" id="completion-toast">You make every moment prettier. ♥</div>
-    <audio id="music" loop><source src="music/our-song.mp3" type="audio/mpeg"></audio>
+    <audio id="music" loop preload="none"><source src="music/our-song.mp3" type="audio/mpeg"></audio>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="js/app.js"></script>
   </body>
