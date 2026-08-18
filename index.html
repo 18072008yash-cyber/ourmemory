@@ -121,7 +121,7 @@
       </section>
 
       <section class="screen" id="opener" data-screen="opener">
-        <video class="full-video" id="opener-video" autoplay controls playsinline preload="metadata" poster="images/opener-poster.jpg"><source src="videos/01-opener.mp4?v=20260819" type="video/mp4"></video>
+        <video class="full-video" id="opener-video" controls playsinline preload="none" poster="images/opener-poster.jpg"><source src="videos/01-opener.mp4?v=20260819" type="video/mp4"></video>
         <div class="video-fallback">Add <code>videos/01-opener.mp4</code> to reveal your opening film.</div>
         <button id="opener-start" style="position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:13px 18px;background:rgba(19,8,28,.74);backdrop-filter:blur(14px);color:white;font:600 .84rem 'DM Sans',sans-serif;cursor:pointer">Tap to play the intro &nbsp; ▶</button>
             <button class="skip-btn" data-go="cuteness-intro">Skip intro</button>
@@ -192,7 +192,7 @@
       </section>
 
       <section class="screen" id="transition" data-screen="transition"><div class="typewriter-wrap"><p class="eyebrow">One more thing</p><h2 id="transition-text"></h2><button class="text-btn hidden" id="reveal-final" data-go="final-video">Reveal it <i>→</i></button></div></section>
-      <section class="screen" id="final-video" data-screen="final-video"><video class="full-video" id="last-video" autoplay controls playsinline preload="metadata" poster="images/final-poster.jpg"><source src="videos/17-final-surprise.mp4?v=20260819" type="video/mp4"></video><div class="video-fallback">Add <code>videos/17-final-surprise.mp4</code> for the final film.</div><button class="skip-btn" data-go="laughing">Continue</button></section>
+      <section class="screen" id="final-video" data-screen="final-video"><video class="full-video" id="last-video" controls playsinline preload="none" poster="images/final-poster.jpg"><source src="videos/17-final-surprise.mp4?v=20260819" type="video/mp4"></video><div class="video-fallback">Add <code>videos/17-final-surprise.mp4</code> for the final film.</div><button class="skip-btn" data-go="laughing">Continue</button></section>
       <section class="screen" id="laughing" data-screen="laughing"><div class="laughing-sky" id="laughing-sky" aria-hidden="true"></div><div class="laughing-content"><p class="eyebrow">One last silly moment</p><h2>hehehehehe<br><em>sorryyyy</em> 😂</h2><button class="primary-btn" data-go="tulip-intro"><span>Continue</span><i>→</i></button></div></section>
       <section class="screen" id="tulip-intro" data-screen="tulip-intro">
         <div class="tulip-intro-glow" aria-hidden="true"></div>
