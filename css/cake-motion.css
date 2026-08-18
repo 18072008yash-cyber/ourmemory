@@ -1,0 +1,2 @@
+.wind i{animation:none!important}.cake-stage.blown .wind i{animation:wind-blow .7s ease-out forwards!important}
+#blow-candles{display:flex;margin-left:auto;margin-right:auto}

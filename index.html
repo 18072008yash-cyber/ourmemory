@@ -8,10 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/cuteness.css" />
-    <link rel="stylesheet" href="css/cuteness-extra.css" />
-    <link rel="stylesheet" href="css/performance.css" />
+    <link rel="stylesheet" href="css/style.css?v=20260819" />
+    <link rel="stylesheet" href="css/cuteness.css?v=20260819" />
+    <link rel="stylesheet" href="css/cuteness-extra.css?v=20260819" />
+    <link rel="stylesheet" href="css/performance.css?v=20260819" />
+    <link rel="stylesheet" href="css/lock-screen.css?v=20260819" />
+    <link rel="stylesheet" href="css/cake-screen.css?v=20260819" />
+    <link rel="stylesheet" href="css/cake-motion.css?v=20260819" />
+    <link rel="stylesheet" href="css/cake-party.css?v=20260819" />
+    <link rel="stylesheet" href="css/cake-party-motion.css?v=20260819" />
+    <link rel="stylesheet" href="css/feedback.css?v=20260819" />
+    <link rel="stylesheet" href="css/tulip-surprise.css?v=20260819" />
+    <link rel="stylesheet" href="css/tulip-realism.css?v=20260819" />
+    <link rel="stylesheet" href="css/tulip-flower-detail.css?v=20260819" />
+    <link rel="stylesheet" href="css/birthday-countdown.css?v=20260819" />
+    <link rel="stylesheet" href="css/smooth-performance.css?v=20260819" />
+    <link rel="stylesheet" href="css/camera-surprise.css?v=20260819" />
     <style>
       .memory-card.watched{border-color:#f2c4ff;box-shadow:0 0 0 1px rgba(255,189,225,.22),0 16px 32px rgba(143,77,212,.16)}
       #card-grid .memory-card::after{content:none!important;display:none!important}#card-grid .memory-card{cursor:default}.edit-checklist{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:16px auto 0;max-width:350px}.edit-status{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.14);border-radius:99px;padding:7px 11px;color:#a89cac;background:rgba(255,255,255,.035);font:700 .58rem 'DM Sans',sans-serif;letter-spacing:.08em;transition:.35s;cursor:pointer;position:relative}.edit-status:hover{transform:translateY(-2px);border-color:rgba(255,205,234,.65);color:#f9e3ee}.edit-status:hover::after{content:'♥ ✦';position:absolute;left:50%;top:-18px;translate:-50% 0;color:#ffc0dc;white-space:nowrap;font-size:.75rem;pointer-events:none;animation:heart-sparkle .8s ease-out both}.edit-status b{display:none}.edit-status.checked{color:#f5d5e5;border-color:rgba(255,177,218,.48);background:linear-gradient(120deg,rgba(222,181,255,.16),rgba(255,142,189,.14))}.edit-status.checked b{display:grid;place-items:center;width:17px;height:17px;border-radius:50%;font-size:.68rem;font-weight:800;color:#2a1432;background:linear-gradient(135deg,#edc7ff,#ffb4d0);box-shadow:0 3px 12px rgba(255,148,202,.28)}@keyframes heart-sparkle{from{opacity:0;transform:translateY(8px) scale(.7)}to{opacity:1;transform:translateY(-5px) scale(1)}}.ending-signature{font:italic 1.05rem/1.3 'Playfair Display',serif!important;color:#efc9e2!important;margin:7px auto 28px!important}
@@ -27,7 +39,58 @@
   <body>
     <main id="app" aria-live="polite">
       <div class="aurora"></div><div class="grain"></div>
-      <section class="screen active" id="welcome" data-screen="welcome">
+      <section class="screen active" id="unlock" data-screen="unlock">
+        <div class="lock-halo halo-one" aria-hidden="true"></div><div class="lock-halo halo-two" aria-hidden="true"></div>
+        <div class="lock-card glass" id="lock-card">
+          <div class="lock-icon" aria-hidden="true"><span></span></div>
+          <p class="eyebrow">A little secret, just for you</p>
+          <h1>Unlock your<br><em>surprise.</em></h1>
+          <p class="lock-hint">Hint: “A beautiful day when my love was born”</p>
+          <div class="pin-display"><input id="pin-input" type="password" inputmode="numeric" autocomplete="off" maxlength="8" readonly aria-label="Enter the eight digit passcode" /><span id="pin-dots" aria-hidden="true">○ ○ ○ ○ ○ ○ ○ ○</span></div>
+          <div class="pin-pad" aria-label="Passcode keypad">
+            <button type="button" data-pin-key="1">1</button><button type="button" data-pin-key="2">2</button><button type="button" data-pin-key="3">3</button>
+            <button type="button" data-pin-key="4">4</button><button type="button" data-pin-key="5">5</button><button type="button" data-pin-key="6">6</button>
+            <button type="button" data-pin-key="7">7</button><button type="button" data-pin-key="8">8</button><button type="button" data-pin-key="9">9</button>
+            <button type="button" class="pin-clear" data-pin-action="clear">Clear</button><button type="button" data-pin-key="0">0</button><button type="button" class="pin-back" data-pin-action="back" aria-label="Delete last digit">⌫</button>
+          </div>
+          <p class="pin-message" id="pin-message" aria-live="polite">Enter the code to reveal your surprise.</p>
+        </div>
+      </section>
+
+      <section class="screen" id="birthday-countdown" data-screen="birthday-countdown">
+        <div class="countdown-party" id="countdown-party" aria-hidden="true"></div>
+        <div class="countdown-content">
+          <p class="eyebrow" id="countdown-eyebrow">Get ready...</p>
+          <div class="countdown-number" id="countdown-number">3</div>
+          <div class="countdown-reveal" id="countdown-reveal">
+            <p>It’s my madam ji’s birthday <em>yayyyyy!</em></p>
+            <h2>Happy birthday<br><em>my lovee</em> ❤️❤️</h2>
+            <button class="primary-btn hidden" id="countdown-next" data-go="cake"><span>Let’s celebrate</span><i>→</i></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="cake" data-screen="cake">
+        <div class="cake-party" id="cake-party" aria-hidden="true"></div>
+        <div class="cake-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>♥</i><i>✦</i><i>✧</i></div>
+        <div class="cake-content">
+          <p class="eyebrow">Make a little wish</p>
+          <h2>A cake for my<br><em>beautiful birthday girl.</em></h2>
+          <div class="cake-stage" id="cake-stage" aria-label="A birthday cake with lit candles">
+            <div class="wind" id="cake-wind" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="cake-candles" aria-hidden="true"><span><b></b></span><span><b></b></span><span><b></b></span><span><b></b></span><span><b></b></span></div>
+            <div class="cake-top"><i></i><i></i><i></i></div>
+            <div class="cake-middle"><i></i><i></i></div>
+            <div class="cake-bottom"><i></i><i></i><i></i><i></i></div>
+            <div class="cake-plate"></div>
+          </div>
+          <p class="cake-note" id="cake-note">I lovee youu sooo much ❤️😊</p>
+          <button class="primary-btn" id="blow-candles"><span>Blow the candles</span><i>〰</i></button>
+          <button class="text-btn hidden" id="cake-next" data-go="welcome">Continue to your surprise <i>→</i></button>
+        </div>
+      </section>
+
+      <section class="screen" id="welcome" data-screen="welcome">
         <div class="constellation" aria-hidden="true"></div>
         <div class="hero-content">
           <p class="eyebrow">For my beautiful princess</p>
@@ -58,10 +121,25 @@
       </section>
 
       <section class="screen" id="opener" data-screen="opener">
-        <video class="full-video" id="opener-video" autoplay controls playsinline preload="metadata" poster="images/opener-poster.jpg"><source src="videos/01-opener.mp4" type="video/mp4"></video>
+        <video class="full-video" id="opener-video" autoplay controls playsinline preload="metadata" poster="images/opener-poster.jpg"><source src="videos/01-opener.mp4?v=20260819" type="video/mp4"></video>
         <div class="video-fallback">Add <code>videos/01-opener.mp4</code> to reveal your opening film.</div>
         <button id="opener-start" style="position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:13px 18px;background:rgba(19,8,28,.74);backdrop-filter:blur(14px);color:white;font:600 .84rem 'DM Sans',sans-serif;cursor:pointer">Tap to play the intro &nbsp; ▶</button>
-        <button class="skip-btn" data-go="cuteness-intro">Skip intro</button>
+            <button class="skip-btn" data-go="cuteness-intro">Skip intro</button>
+      </section>
+
+      <section class="screen" id="camera-surprise" data-screen="camera-surprise">
+        <div class="camera-orb camera-orb-one" aria-hidden="true"></div><div class="camera-orb camera-orb-two" aria-hidden="true"></div>
+        <div class="camera-card glass">
+          <h2 class="camera-title">Say chees<br><em>cutieeee 😊</em></h2>
+          <div class="camera-frame" id="camera-frame">
+            <video id="camera-preview" playsinline muted aria-label="Camera preview"></video>
+            <img id="camera-photo" alt="Your captured photo" />
+            <div class="camera-placeholder" id="camera-placeholder">♡</div>
+          </div>
+          <p class="camera-status" id="camera-status" aria-live="polite">Nothing is captured until you choose to take a photo.</p>
+          <button class="primary-btn" id="open-camera"><span>Open camera</span><i>⌁</i></button>
+          <button class="primary-btn hidden" id="capture-photo"><span>Take photo</span><i>◉</i></button>
+        </div>
       </section>
 
       <section class="screen" id="cuteness-intro" data-screen="cuteness-intro">
@@ -69,9 +147,9 @@
         <div class="cuteness-start-card glass">
           <div class="start-face" aria-hidden="true">🥹</div>
           <p class="eyebrow">One important thing first</p>
-          <h2>Let’s measure<br>how <em>cutee</em> you are.</h2>
+          <h2>Let’s check<br>how <em>cutee</em> you are.</h2>
           <p>I have a feeling this meter may not survive...</p>
-          <button class="primary-btn" data-go="cuteness"><span>Let’s measure</span><i>→</i></button>
+          <button class="primary-btn" data-go="camera-surprise"><span>Let’s check</span><i>→</i></button>
         </div>
       </section>
 
@@ -109,19 +187,57 @@
       </section>
 
       <section class="screen scroll-screen" id="gallery" data-screen="gallery">
-        <header class="gallery-head"><h2>There are some <em>beautiful edits</em> for you, my <em>beautiful princess.</em></h2><p>I hope you enjoy.</p><div class="watch-progress"><span id="watched-count">0</span> / 16 edits watched <div><i id="progress-fill"></i></div></div><div class="edit-checklist" id="edit-checklist" aria-label="Edit completion status"></div></header>
+        <header class="gallery-head"><h2>There are some <em>beautiful edits</em> for you, my <em>beautiful princess.</em></h2><p>I hope you enjoy.</p><div class="watch-progress"><span id="watched-count">0</span> / 15 edits watched <div><i id="progress-fill"></i></div></div><div class="edit-checklist" id="edit-checklist" aria-label="Edit completion status"></div></header>
         <button class="final-lock" id="final-lock" disabled><span>🔒</span> Watch every edit to unlock</button>
       </section>
 
       <section class="screen" id="transition" data-screen="transition"><div class="typewriter-wrap"><p class="eyebrow">One more thing</p><h2 id="transition-text"></h2><button class="text-btn hidden" id="reveal-final" data-go="final-video">Reveal it <i>→</i></button></div></section>
-      <section class="screen" id="final-video" data-screen="final-video"><video class="full-video" id="last-video" autoplay controls playsinline preload="metadata" poster="images/final-poster.jpg"><source src="videos/17-final-surprise.mp4" type="video/mp4"></video><div class="video-fallback">Add <code>videos/17-final-surprise.mp4</code> for the final film.</div><button class="skip-btn" data-go="laughing">Continue</button></section>
-      <section class="screen" id="laughing" data-screen="laughing"><div class="laughing-sky" id="laughing-sky" aria-hidden="true"></div><div class="laughing-content"><p class="eyebrow">One last silly moment</p><h2>hehehehehe<br><em>sorryyyy</em> 😂</h2><button class="primary-btn" data-go="ending"><span>Continue</span><i>→</i></button></div></section>
+      <section class="screen" id="final-video" data-screen="final-video"><video class="full-video" id="last-video" autoplay controls playsinline preload="metadata" poster="images/final-poster.jpg"><source src="videos/17-final-surprise.mp4?v=20260819" type="video/mp4"></video><div class="video-fallback">Add <code>videos/17-final-surprise.mp4</code> for the final film.</div><button class="skip-btn" data-go="laughing">Continue</button></section>
+      <section class="screen" id="laughing" data-screen="laughing"><div class="laughing-sky" id="laughing-sky" aria-hidden="true"></div><div class="laughing-content"><p class="eyebrow">One last silly moment</p><h2>hehehehehe<br><em>sorryyyy</em> 😂</h2><button class="primary-btn" data-go="tulip-intro"><span>Continue</span><i>→</i></button></div></section>
+      <section class="screen" id="tulip-intro" data-screen="tulip-intro">
+        <div class="tulip-intro-glow" aria-hidden="true"></div>
+        <div class="tulip-intro-content">
+          <p class="eyebrow">Wait, wait...</p>
+          <h2>Jane se pehle<br>aapke liye <em>ek aur chiz...</em></h2>
+          <p>Umm... continue kariye. 🌷</p>
+          <button class="primary-btn" data-go="tulip-story"><span>Continue</span><i>→</i></button>
+        </div>
+      </section>
+      <section class="screen" id="tulip-story" data-screen="tulip-story">
+        <div class="tulip-world" id="tulip-world">
+          <div class="garden-sky" aria-hidden="true"></div><div class="garden-ground" aria-hidden="true"></div>
+          <div class="garden-tulips" id="garden-tulips" aria-hidden="true"></div>
+          <div class="solo-tulip" aria-hidden="true"><i class="solo-bloom"><b></b><b></b><b></b><b></b><b></b></i><i class="solo-stem"></i><i class="solo-leaf leaf-one"></i><i class="solo-leaf leaf-two"></i></div>
+        </div>
+        <div class="tulip-copy">
+          <p class="eyebrow" id="tulip-eyebrow">Just for you</p>
+          <h2 id="tulip-title">A little <em>tulip</em><br>for my love.</h2>
+          <p id="tulip-note">I loveee youu ❤️❤️</p>
+          <button class="primary-btn hidden" id="tulip-continue"><span>Continue</span><i>→</i></button>
+          <button class="text-btn hidden" id="tulip-next" data-go="feedback">Continue <i>→</i></button>
+        </div>
+      </section>
+      <section class="screen" id="feedback" data-screen="feedback">
+        <div class="feedback-orb feedback-orb-one" aria-hidden="true"></div><div class="feedback-orb feedback-orb-two" aria-hidden="true"></div>
+        <div class="feedback-card glass">
+          <p class="eyebrow">Before the ending</p>
+          <h2>Did this make<br>you <em>smile?</em></h2>
+          <p class="feedback-copy">I hope apko yeh surprise achaa laga hoga, toh please iss feedback mai aap sab bataiyee ga apko kesa laga, kya kya acha laga, sab kuch — aur jo kuch bhi aap khena chate hai, please bataiyee gaa.<br><br><em>You know (Feedback Form) 😅</em></p>
+          <form id="feedback-form" action="https://formspree.io/f/xoeakqly" method="POST">
+            <input type="hidden" name="_subject" value="A new birthday surprise feedback" />
+            <textarea name="message" id="feedback-message" maxlength="2000" placeholder="Write anything you want to say..."></textarea>
+            <button class="primary-btn feedback-send" type="submit"><span>Send your feedback</span><i>♥</i></button>
+          </form>
+          <p class="feedback-status" id="feedback-status" aria-live="polite"></p>
+          <button class="text-btn hidden" id="feedback-next" data-go="ending">Continue to the ending <i>→</i></button>
+        </div>
+      </section>
       <section class="screen" id="ending" data-screen="ending"><div class="sky" id="sky" aria-hidden="true"></div><div class="ending-content"><p class="eyebrow">And that’s only the beginning</p><h1>To more laughter.<br>More <em>us.</em></h1><p>I hope every birthday finds you more loved than the last.</p><p class="ending-signature">Always yours,<br><em>Yash ♥</em></p><button class="primary-btn" id="replay"><span>Replay our story</span><i>↻</i></button><p class="replay-note">Made only for you, by <em>Yash</em> ♥<br>I lovee youu ❤️❤️</p><button class="secret-heart" id="secret-heart" aria-label="A little secret">♥</button><p class="secret-message" id="secret-message">No matter what, I’m always with you.</p></div></section>
     </main>
     <div class="modal" id="video-modal" aria-hidden="true"><button class="modal-close" aria-label="Close video">×</button><div class="modal-film"><p class="film-label" id="film-label"></p><video id="memory-video" controls playsinline><source id="memory-source" src="" type="video/mp4"></video><div class="video-fallback">Add this video to the <code>videos</code> folder to play it.</div></div></div>
     <div class="completion-toast" id="completion-toast">You make every moment prettier. ♥</div>
     <audio id="music" loop preload="none"><source src="music/our-song.mp3" type="audio/mpeg"></audio>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=20260819"></script>
   </body>
 </html>
